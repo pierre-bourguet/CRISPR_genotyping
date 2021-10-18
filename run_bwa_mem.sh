@@ -3,7 +3,7 @@
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=2
 #SBATCH --mem-per-cpu=1G
-#SBATCH --time=0-00:05:00
+#SBATCH --time=0-00:10:00
 #SBATCH --qos=short
 #SBATCH --output=logs/%A_%a_%x.out
 #SBATCH --error=logs/%A_%a_%x.err
