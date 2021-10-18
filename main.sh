@@ -32,10 +32,5 @@ mkdir -p indexes && mv ${fasta}?* indexes && cp ${fasta} indexes/
 
 echo -e "$(date) .. Submitting job arrays to map with bwa & count indels for each sample..."
 nb_sample=` ls ${fq_dir}/*gz | wc -l `
-# sbatch --parsable --array=1-2 run_bwa_mem.sh $fq_dir $fasta_basename $id $threshold $indel
 jid1=$(sbatch --parsable --array=1-${nb_sample} run_bwa_mem.sh $fq_dir $fasta_basename $id $threshold $indel)
-
-echo -e "$(date) .. Parallel processing is over, creating summary files..."
 jid2=$(sbatch --parsable --depend=afterany:$jid1 main_post_processing.sh $id)
-
-echo -e "$(date) .. Job done..."

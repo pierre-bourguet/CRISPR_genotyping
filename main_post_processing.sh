@@ -38,3 +38,5 @@ paste <(tail -n+2 header) <(tail -n+2 ${id}_total_frequency_of_indels.tsv) | sor
 echo -e "$(date) .. Cleaning up..."
 mkdir -p $id && rm -r idxstats header
 mv bam indexes bwa_logs mpileup mutations *tsv $id
+
+echo -e "$(date) .. Job done..."
