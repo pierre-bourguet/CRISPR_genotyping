@@ -13,7 +13,7 @@ sbatch main.sh -q fastq_directory -f fasta_file -n study_name
 -n study name, a prefix that will be added to files and folders.  
 The command should be run from the directory where the script files are located. The main program is to be run on the cluster.  
 Maximum tested indel size and threshold for reported indels can be customized easily by changing argument values at the beginning of *main.sh*. Testing for larger indels will increase computation time. This in turn could make the script fail because of slurm time limit, this would have to be increased in *run_bwa_mem.sh*.
-The interactive version (slower but not dependent on the slurm queue) is meant to be run in interactive mode (not recommended). This code can be useful if you want to run this locally though.  
+The interactive version (slower but not dependent on the slurm queue) is meant to be run in interactive mode, it's not recommended but can be can be useful if you want to run this locally.  
 
 ### Output files
 A directory with your study name is created in the current directory and contains all output files:  
