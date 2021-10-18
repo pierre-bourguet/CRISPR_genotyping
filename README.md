@@ -30,4 +30,5 @@ Use .tsv tables to find samples with the most indels. Check the most interesting
 Small tip: for indels reported in the mutations folder, the reference sequence is copied from your input fasta file. You can quickly check if indels occur where they should by using lowercase for your CRISPR target sequence in the fasta file, while the rest of the sequence is in uppercase. If indels are detected in this target sequence, the reference base in "mutations" files will be lowercase.
 
 ### Copying & distribution
-This program is a free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version. Please cite this github page.
+This program is a free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.  
+Cite this github page using https://github.com/pierre-bourguet/CRISPR_genotyping.git
