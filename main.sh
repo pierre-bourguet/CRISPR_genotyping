@@ -7,7 +7,7 @@
 #SBATCH --qos=short
 #SBATCH --output=logs/%A_%a_%x.out
 #SBATCH --error=logs/%A_%a_%x.err
-
+mkdir -p logs
 # arguments
 threshold=0.1 # frequency threshold (from 0 to 1) to report mutations
 indel=30 # size of indels that will be tested
