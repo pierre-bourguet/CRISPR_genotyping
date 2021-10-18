@@ -16,8 +16,7 @@
 
 # ml build-env/2020 samtools/1.10-foss-2018b bwa/0.7.17-patch-1-foss-2018b
 fq_file=`ls $1 | sed -n ${SLURM_ARRAY_TASK_ID}p`
-# name=`basename $1 .fq.gz`
-name=`basename $fq_file .fq.gz`
+name=`basename $fq_file .fq.gz | sed 's/.fastq.gz//'`
 id=$3
 threshold=$4 # frequency threshold (from 0 to 1) to report mutations
 indel=$5 # size of indels that will be tested
