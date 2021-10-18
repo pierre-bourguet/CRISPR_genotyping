@@ -10,7 +10,7 @@
 
 id=$1
 
-echo -e "$(date) .. Creating indel frequency tables..." # compile the data into one large table: selecting the mutation with the highest coverage, and extract frequency. The reason is that high coverage / frequency deletions are often followed by low coverage & even-higher-frequency mutations
+echo -e "$(date) .. Creating indel frequency tables, high coverage mutations..." # compile the data into one large table: selecting the mutation with the highest coverage, and extract frequency. The reason is that high coverage / frequency deletions are often followed by low coverage & even-higher-frequency mutations
 c=0 && for a in mutations/*mutations.tsv ; do
     if [ $c = 0 ]; then echo > header && cut -f1 $a | uniq > tmp && echo "sum" >> tmp && tr "\n" "\t" < tmp > ${id}_frequency_of_top_coverage_indels.tsv && echo "" >> ${id}_frequency_of_top_coverage_indels.tsv && c=1 ; fi # row names
     touch ${a}_tmp
@@ -23,6 +23,7 @@ done
 nbcol=$(echo `head -1 ${id}_frequency_of_top_coverage_indels.tsv | wc | cut -f13 -d " "` "+1" | bc) # put the number of columns in a variable
 paste <(tail -n+2 header) <(tail -n+2 ${id}_frequency_of_top_coverage_indels.tsv) | sort -nrk${nbcol},${nbcol} -t$'\t' | cat <(head -1 ${id}_frequency_of_top_coverage_indels.tsv | paste <(head -1 header) -) - > tmp && mv tmp ${id}_frequency_of_top_coverage_indels.tsv
 # same compiling but this time total frequency of mutations that passed the treshold
+echo -e "$(date) .. Creating indel frequency tables, total mutation frequency..."
 c=0 && for a in mutations/*mutations.tsv ; do
     if [ $c = 0 ]; then echo > header && cut -f1 $a | sort | uniq > tmp && echo "sum" >> tmp && tr "\n" "\t" < tmp > ${id}_total_frequency_of_indels.tsv && echo "" >> ${id}_total_frequency_of_indels.tsv && c=1 ; fi # row names
     touch ${a}_tmp
@@ -38,5 +39,3 @@ paste <(tail -n+2 header) <(tail -n+2 ${id}_total_frequency_of_indels.tsv) | sor
 echo -e "$(date) .. Cleaning up..."
 mkdir -p $id && rm -r idxstats header
 mv bam indexes bwa_logs mpileup mutations *tsv $id
-
-echo -e "$(date) .. Job done..."
