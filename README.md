@@ -18,7 +18,8 @@ A directory with your study name is created in the current directory and contain
 * **idxstats.tsv** Aggregated output from samtools idxstats. Reports the gene size in 1st column followed by number of reads at each gene for each sample. Used for quality control, coverage should be relatively homogeneous.
 * **bam**: folder with the aligned reads (.bam) and index files (.bai). Needed to vizualize reads in IGV or another genome browser
 * **mutations**: folder with all indels above the frequency threshold (10% by default) for each gene. Columns are: genename, position, reference sequence, coverage, indel, frequency.
-* bwa_logs, indexes, mpileup folders : intermediate folders you can ignore
+* logs: contain log files for main and parallel jobs, will contains error messages if something goes wrong
+* indexes, mpileup folders : intermediate folders you can ignore
 
 ## Analysis
 Use .tsv tables to find samples with the most indels. Check the most interesting samples in IGV by dragging bam files. The reason to check is that the script only tests indels up to 30bp, so substitutions and larger indels are missed (not so rare). IGV also helps to vizualize alleles with complex mutations.  
