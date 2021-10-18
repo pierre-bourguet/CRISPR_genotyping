@@ -8,7 +8,7 @@ sbatch main.sh -q fastq_directory -f fasta_file.fa -n study_name
 -f fasta file that contains your target genes (relative or absolute path).  
 -n study name, a prefix that will be added to files and folders.  
 The command should be run from the directory where the script files are located. The main program is to be run on the cluster.  
-Maximum tested indel size and threshold for reported indels can be customized easily by changing argument values at the beginning of *main.sh*  
+Maximum tested indel size and threshold for reported indels can be customized easily by changing argument values at the beginning of *main.sh*. Testing for larger indels will increase computation time.  
 The interactive version (slower but not dependent on the slurm queue) is meant to be run in interactive mode (not recommended). This code can be useful if you want to run this locally though.  
 
 ## Output files
